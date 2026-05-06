@@ -38,4 +38,4 @@ for step in range(config.get("max_steps", 500)):
         break
 
 save_checkpoint(world_model, "checkpoints/marlinnet_final.pth")
-print(f"\n✅ Episode Finished! Total Reward: {total_reward:.1f}")
+print(f"\nEpisode Finished! Total Reward: {total_reward:.1f}")
