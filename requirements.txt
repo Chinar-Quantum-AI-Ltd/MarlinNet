@@ -1,0 +1,10 @@
+torch
+torchvision
+torchaudio
+ultralytics
+gymnasium
+numpy
+shapely
+matplotlib
+pyyaml
+stable-baselines3[extra]   # for RL
