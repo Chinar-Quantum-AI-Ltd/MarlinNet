@@ -1,3 +1,4 @@
+import os
 import yaml
 import numpy as np
 from models.jepa_world_model import JEPAWorldModel
@@ -24,7 +25,7 @@ for step in range(config.get("max_steps", 500)):
     
     # RL Policy + Classical Override
     action_rl = policy(latent.unsqueeze(0)).detach().cpu().numpy()[0]
-    action = velocity_obstacle_avoidance(env.pos, env.other_vessels)
+    action = velocity_obstacle_avoidance(env.pos, np.array([env.speed, 0.0]), env.other_vessels)
     
     obs, reward, done, _, info = env.step(action)
     total_reward += reward
@@ -37,5 +38,6 @@ for step in range(config.get("max_steps", 500)):
     if done:
         break
 
+os.makedirs("checkpoints", exist_ok=True)
 save_checkpoint(world_model, "checkpoints/marlinnet_final.pth")
 print(f"\nEpisode Finished! Total Reward: {total_reward:.1f}")

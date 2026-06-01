@@ -21,9 +21,9 @@ class MaritimeEnv(gym.Env):
         return np.zeros((3, 224, 224), dtype=np.float32)
 
     def step(self, action):
-        rudder, throttle = action
-        self.heading = (self.heading + rudder * 8) % 360
-        self.speed = np.clip(self.speed + throttle * 3, 0, 20)
+        left, right = action
+        self.speed = np.clip((left + right) / 2.0 * 10.0, 0, 20)
+        self.heading = (self.heading + (right - left) * 5.0) % 360
         rad = np.radians(self.heading)
         self.pos += self.speed * np.array([np.cos(rad), np.sin(rad)]) * 0.08
 

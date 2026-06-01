@@ -5,6 +5,7 @@ ultralytics
 gymnasium
 numpy
 shapely
+timm
 matplotlib
 pyyaml
 stable-baselines3[extra]   # for RL
