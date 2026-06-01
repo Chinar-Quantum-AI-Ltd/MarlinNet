@@ -1,3 +1,4 @@
+import numpy as np
 from ultralytics import YOLO
 
 waste_detector = YOLO('yolov8s.pt')
