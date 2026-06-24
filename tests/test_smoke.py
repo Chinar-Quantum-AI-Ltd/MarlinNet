@@ -46,9 +46,9 @@ def env():
 
 # module-scoped monkeypatch shim (pytest's built-in monkeypatch is function-scoped)
 @pytest.fixture(scope="module")
+@pytest.fixture(scope="module")
 def monkeypatch_module():
-    import _pytest.monkeypatch
-    mp = _pytest.monkeypatch.MonkeyPatch()
+    mp = pytest.MonkeyPatch()
     yield mp
     mp.undo()
 

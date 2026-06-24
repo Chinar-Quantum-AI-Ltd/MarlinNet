@@ -9,8 +9,12 @@ DEVICE = "cpu"
 
 class FakeEncoder(nn.Module):
     """Lightweight stand-in for the frozen DINO ViT — returns correct visual dim."""
+    def __init__(self):
+        super().__init__()
+        self.frozen_weight = nn.Parameter(torch.zeros(VISUAL_DIM, 1))
+
     def forward(self, x):
-        return torch.zeros(x.shape[0], VISUAL_DIM)
+        return torch.zeros(x.shape[0], VISUAL_DIM, device=x.device)
 
 
 @pytest.fixture

@@ -87,8 +87,8 @@ class TestGRUTransitionModelBehavior:
     def test_different_actions_give_different_outputs(self, model):
         model.eval()
         z = torch.randn(1, LATENT_DIM)
-        a_full_ahead = torch.tensor([[1.0, 1.0]])
-        a_full_reverse = torch.tensor([[-1.0, -1.0]])
+        a_full_ahead = torch.ones(1, ACTION_DIM)
+        a_full_reverse = -torch.ones(1, ACTION_DIM)
         h = model.init_hidden(1, DEVICE)
         with torch.no_grad():
             z1, _ = model(z, a_full_ahead, h)
