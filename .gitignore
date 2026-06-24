@@ -224,3 +224,6 @@ __pycache__/
 /docs/
 # or, if you intend to ignore any folder literally named "docs" at any depth:
 # **/docs/
+
+
+/models/__pycache__/
