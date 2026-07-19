@@ -14,11 +14,15 @@ class JEPAWorldModel(nn.Module):
         try:
             self.encoder = timm.create_model('vit_small_patch8_224.dino', pretrained=True, num_classes=0)
         except:
+            # Lightweight fallback when DINO weights are unavailable.
+            # Linear projects conv features to VISUAL_DIM so the latent shape
+            # contract (LATENT_DIM = VISUAL_DIM + VESSEL_DIM) always holds.
             self.encoder = nn.Sequential(
                 nn.Conv2d(3, 64, 7, stride=2),
                 nn.ReLU(),
                 nn.AdaptiveAvgPool2d(1),
-                nn.Flatten()
+                nn.Flatten(),
+                nn.Linear(64, VISUAL_DIM),
             )
         self.encoder.eval().to(device)
         for p in self.encoder.parameters():

@@ -221,6 +221,5 @@ __marimo__/
 __pycache__/
 **/__pycache__/
 
-
-#__docs__/
-*docs/*
+checkpoints/
+/models/__pycache__/
