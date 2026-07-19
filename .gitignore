@@ -223,3 +223,6 @@ __pycache__/
 
 checkpoints/
 /models/__pycache__/
+
+#docs
+*docs/*
