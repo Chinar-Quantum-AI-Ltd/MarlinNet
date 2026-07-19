@@ -221,3 +221,6 @@ __marimo__/
 __pycache__/
 **/__pycache__/
 
+
+#__docs__/
+*docs/*
