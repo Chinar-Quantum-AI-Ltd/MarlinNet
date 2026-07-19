@@ -1,4 +1,4 @@
-device: mps
+device: cuda
 jepa_checkpoint: null
 yolo_model: yolov8s.pt
 max_steps: 500

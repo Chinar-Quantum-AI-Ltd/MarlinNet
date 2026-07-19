@@ -20,6 +20,10 @@ class MaritimeEnv(gym.Env):
     def _get_obs(self):
         return np.zeros((3, 224, 224), dtype=np.float32)
 
+    def get_vessel_state(self):
+        """Returns (speed, heading_deg) for latent augmentation."""
+        return self.speed, self.heading
+
     def step(self, action):
         left, right = action
         self.speed = np.clip((left + right) / 2.0 * 10.0, 0, 20)
